@@ -21,6 +21,7 @@
                         <div
                             class="card-header bg-primary  py-3 d-flex flex-row align-items-center justify-content-between">
                             <a href="{{ route('customers.create') }}" class="btn btn-secondary float-end">Add New customers</a>
+                            <a href="{{ route('transactions.create') }}" class="btn btn-success float-end">Add Transaction</a>
                         </div>
                         @include('partials.errors')
                         <div class="card-body">

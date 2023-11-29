@@ -20,39 +20,39 @@
                     <div class="card">
                         <div
                             class="card-header bg-primary  py-3 d-flex flex-row align-items-center justify-content-between">
-                            <a href="{{ route('customers.index') }}" class="btn btn-secondary justify-content-end">Back</a>
+                            <a href="{{ route('transactions.index') }}" class="btn btn-secondary justify-content-end">Back</a>
                         </div>
                         @include('partials.errors')
                         <div class="card-body">
-                            <form action="{{route('customers.store')}}" method="POST">
+                            <form action="{{route('transactions.store')}}" method="POST">
                                 @csrf
                                 <div class="row mb-3 font-weight-bolder">
                                     <div class="col-sm-12">
-                                        <label for="inputText" class=" col-form-label">Customer Name</label>
-                                        <input type="text" name="customer_name" min="4" class="form-control" placeholder="Enter Customer Name:" required>
-                                    </div>
-                                </div>
-                                <div class="row mb-3 font-weight-bolder">
-                                    <div class="col-sm-12">
-                                        <label for="inputText" class=" col-form-label">Customer Age</label>
-                                        <input type="number" name="customer_age" min="18" max="65" class="form-control" placeholder="Enter Customer Age:" required>
-                                    </div>
-                                </div>
-                                <div class="row mb-3 font-weight-bolder">
-                                    <div class="col-sm-12">
-                                        <label for="inputText" class=" col-form-label">Customer Gender</label>
-                                        <select name="customer_gender"  class="form-control"  id="customer_gender">
-                                            <option value="">Select Gender</option>
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
+                                        <label for="inputText" class=" col-form-label">Customer</label>
+                                        <select name="customer_id"  class="form-control"  id="customer_id">
+                                            <option value="">Select Customer</option>
+                                            @foreach($customers as $customer)
+                                                <option value="{{$customer->id}}">{{$customer->customer_name}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
 
                                 <div class="row mb-3 font-weight-bolder">
                                     <div class="col-sm-12">
-                                        <label for="inputText" class=" col-form-label">Customer Income</label>
-                                        <input type="number" name="customer_income" min="100" max="100000" class="form-control" placeholder="Enter Customer Income:" required>
+                                        <label for="inputText" class=" col-form-label">Transaction Amount</label>
+                                        <input type="number" name="transaction_amount" min="100" max="100000" class="form-control" placeholder="Enter Transaction Amount:" required>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3 font-weight-bolder">
+                                    <div class="col-sm-12">
+                                        <label for="inputText" class=" col-form-label">Transaction Type</label>
+                                        <select name="transaction_type"  class="form-control"  id="transaction_type">
+                                            <option value="">Select Type</option>
+                                            <option value="Debit">Debit</option>
+                                            <option value="Credit">Credit</option>
+                                        </select>
                                     </div>
                                 </div>
 

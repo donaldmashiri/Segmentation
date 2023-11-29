@@ -22,7 +22,8 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        $customers = Customer::orderBy('id', 'desc')->get();
+        return view('transactions.create')->with('customers', $customers);
     }
 
     /**
@@ -30,7 +31,21 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'customer_id' => 'required|string|max:255',
+            'transaction_type' => 'required',
+            'transaction_amount' => 'required|numeric',
+        ]);
+
+        $transactions = Transaction::create([
+            'customer_id' => $validatedData['customer_id'],
+            'transaction_amount' => $validatedData['transaction_amount'],
+            'transaction_date' => now(),
+            'transaction_type' => $validatedData['transaction_type'],
+        ]);
+
+        session()->flash('success', 'Transaction Successfully Added.');
+        return redirect(route('transactions.index'));
     }
 
     /**
