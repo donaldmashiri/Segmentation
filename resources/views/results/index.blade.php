@@ -39,9 +39,9 @@
                                         <div >
                                             @if ($customer->customer_income > 150000)
                                                 <p class="text-success">Segment 1: High-income, High-investment customers</p>
-                                            @elseif ($customer->customer_income < 50000)
-                                                <p class="text-warning">Segment 2: Mid-income, Mid-investment customers</p>
                                             @elseif ($customer->customer_income > 50000)
+                                                <p class="text-warning">Segment 2: Mid-income, Mid-investment customers</p>
+                                            @elseif ($customer->customer_income < 50000)
                                                 <p class="text-danger">Segment 3: Low-income, Low-investment customers</p>
                                             @else
                                                 <p>None</p>
