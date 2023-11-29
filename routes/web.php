@@ -13,27 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function () {
+    return view('auth.login');
+});
+
+Auth::routes();
 
 Route::get('auth/google', [\App\Http\Controllers\Auth\LoginController::class, 'redirectToGoogle']);
 Route::get('login/google/callback', [\App\Http\Controllers\Auth\LoginController::class, 'handleGoogleCallback']);
-
-Route::middleware(['web'])->group(function () {
-    Route::get('/', function () {
-        return view('auth.login');
-    });
-
-    Route::middleware(['auth'])->group(function () {
-        Route::middleware([
-            'auth:sanctum',
-            config('jetstream.auth_session'),
-            'verified',
-        ])->group(function () {
-            Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-        });
-
-        Auth::routes();
-
-        Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
         Route::resource('customers', \App\Http\Controllers\CustomerController::class);
         Route::resource('transactions', \App\Http\Controllers\TransactionController::class);
@@ -41,12 +28,3 @@ Route::middleware(['web'])->group(function () {
         Route::resource('results', \App\Http\Controllers\ResultAnalysisController::class);
         Route::resource('report', \App\Http\Controllers\ReportController::class);
         Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
-
-    });
-});
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
