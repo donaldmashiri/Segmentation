@@ -33,9 +33,10 @@
                                 <tr>
                                     <th> {{$customer->id}}</th>
                                     <th> {{$customer->customer_age}}</th>
-                                    <th>{{$customer->customer_income}}</th>
+                                    <th>${{$customer->customer_income}}</th>
                                     <th>
-                                        <div id="analysis" style="display: none;">
+{{--                                        <div id="analysis" style="display: none;">--}}
+                                        <div >
                                             @if ($customer->customer_income > 150000)
                                                 <p class="text-success">Segment 1: High-income, High-investment customers</p>
                                             @elseif ($customer->customer_income < 50000)
