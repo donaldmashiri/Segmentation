@@ -29,7 +29,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('results', \App\Http\Controllers\ResultAnalysisController::class);
     Route::resource('report', \App\Http\Controllers\ReportController::class);
     Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
-    Route::get('/profile', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
 
 
