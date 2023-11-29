@@ -36,6 +36,12 @@
                 </a>
             </li>
 
+            <li class="treeview">
+                <a class="waves-effect  bg-primary" href="{{ route('report.index') }}">
+                    <i class="icon-bubble"></i><span> Report <span>
+                </a>
+            </li>
+
         </ul>
 
     </section>

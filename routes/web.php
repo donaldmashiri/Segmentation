@@ -39,6 +39,7 @@ Route::middleware(['web'])->group(function () {
         Route::resource('transactions', \App\Http\Controllers\TransactionController::class);
         Route::resource('segment', \App\Http\Controllers\SegmentController::class);
         Route::resource('results', \App\Http\Controllers\ResultAnalysisController::class);
+        Route::resource('report', \App\Http\Controllers\ReportController::class);
         Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
 
     });
