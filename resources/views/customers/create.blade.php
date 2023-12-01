@@ -29,13 +29,14 @@
                                 <div class="row mb-3 font-weight-bolder">
                                     <div class="col-sm-12">
                                         <label for="inputText" class=" col-form-label">Customer Name</label>
-                                        <input type="text" name="customer_name" min="4" class="form-control" placeholder="Enter Customer Name:" required>
+                                        <input type="text" name="customer_name" min="4" class="form-control" placeholder="Enter Customer Name:" required oninput="validateInput(event)" />
+
                                     </div>
                                 </div>
                                 <div class="row mb-3 font-weight-bolder">
                                     <div class="col-sm-12">
-                                        <label for="inputText" class=" col-form-label">Customer Age</label>
-                                        <input type="number" name="customer_age" min="18" max="65" class="form-control" placeholder="Enter Customer Age:" required>
+                                        <label for="inputText" class=" col-form-label">Customer Date Of Birth</label>
+                                        <input type="date" name="customer_dob" min="18" max="65" class="form-control" placeholder="Enter Customer Date Of Birth:" required>
                                     </div>
                                 </div>
                                 <div class="row mb-3 font-weight-bolder">
@@ -45,6 +46,18 @@
                                             <option value="">Select Gender</option>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3 font-weight-bolder">
+                                    <div class="col-sm-12">
+                                        <label for="inputText" class=" col-form-label">Segment Type</label>
+                                        <select name="segment_type"  class="form-control"  id="customer_gender">
+                                            <option value="">Select Type</option>
+                                            <option value="Gold">Gold</option>
+                                            <option value="Silver">Silver</option>
+                                            <option value="Platinum">Platinum</option>
                                         </select>
                                     </div>
                                 </div>

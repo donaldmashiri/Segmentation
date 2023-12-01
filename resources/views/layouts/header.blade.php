@@ -122,7 +122,12 @@
     </main>
 
 
-
+    <script>
+        function validateInput(event) {
+            const input = event.target;
+            input.value = input.value.replace(/[0-9]/g, '');
+        }
+    </script>
 
     <!-- Required Jqurey -->
     <script src="{{ asset('assets/plugins/Jquery/dist/jquery.min.js') }}"></script>

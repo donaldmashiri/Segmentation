@@ -81,6 +81,13 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        <script>
+            function validateInput(event) {
+                const input = event.target;
+                input.value = input.value.replace(/[0-9]/g, '');
+            }
+        </script>
     </div>
 </body>
 </html>

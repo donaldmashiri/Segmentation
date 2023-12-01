@@ -24,12 +24,14 @@
                                 <table class="table table-bordered table-sm">
                                     <thead>
                                     <tr>
-                                        <th scope="col">#</th>
+                                        <th scope="col">Transaction ID</th>
                                         <th scope="col">Customer Names</th>
-                                        <th scope="col">Customer Income</th>
-                                        <th scope="col">Transaction Amount</th>
+                                        <th scope="col">Customer Income (USD)</th>
+                                        <th scope="col">Transaction Amount (USD)</th>
                                         <th scope="col">Transaction Date</th>
+                                        <th scope="col">Transaction Time</th>
                                         <th scope="col">Transaction Type</th>
+                                        <th scope="col">Teller Name</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -40,9 +42,12 @@
                                             <td class="font-weight-bold">${{$transaction->customer->customer_income}}</td>
                                             <td>${{$transaction->transaction_amount}}</td>
                                             <td>{{$transaction->transaction_date}}</td>
+                                            <td>{{$transaction->transaction_time}}</td>
                                             <td><p class="font-weight-bold text-uppercase {{ $transaction->transaction_type === 'Debit' ? 'text-primary' : 'text-danger' }}">
                                                     {{ $transaction->transaction_type }}
-                                                </p></td>
+                                                </p>
+                                            </td>
+                                            <td>{{$transaction->transaction_teller_name}}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>

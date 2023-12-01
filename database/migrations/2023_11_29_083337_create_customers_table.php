@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('customer_name');
             $table->string('customer_age');
+            $table->string('customer_dob');
             $table->string('customer_gender');
             $table->string('customer_income');
+            $table->string('segment_type');
             $table->timestamps();
         });
     }

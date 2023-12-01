@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->integer('customer_id');
             $table->date('transaction_date');
+            $table->time('transaction_time');
             $table->string('transaction_amount');
             $table->string('transaction_type');
+            $table->string('transaction_teller_name');
             $table->timestamps();
         });
     }

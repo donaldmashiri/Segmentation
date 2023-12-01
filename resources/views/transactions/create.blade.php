@@ -56,6 +56,13 @@
                                     </div>
                                 </div>
 
+                                <div class="row mb-3 font-weight-bolder">
+                                    <div class="col-sm-12">
+                                        <label for="inputText" class=" col-form-label">Teller Name</label>
+                                        <input type="text" name="transaction_teller_name" min="100" max="100000" class="form-control" placeholder="Enter Teller Name:" required>
+                                    </div>
+                                </div>
+
                                 <div class="m-1">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>

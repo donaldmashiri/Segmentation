@@ -21,8 +21,10 @@ class CustomerFactory extends Factory
         return [
             'customer_name' => $this->faker->name(),
             'customer_age' => $this->faker->numberBetween(18, 65),
+            'customer_dob' => $this->faker->dateTimeBetween('-65 years', '-18 years')->format('Y-m-d'),
             'customer_gender' => $this->faker->randomElement(['Male', 'Female']),
             'customer_income' => $this->faker->numberBetween(50000, 200000),
+            'segment_type' => $this->faker->randomElement(['Gold', 'Silver', 'Platinum']),
         ];
     }
 }

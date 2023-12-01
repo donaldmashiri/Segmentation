@@ -16,7 +16,7 @@
 
             <!-- 2-1 block start -->
             <div class="row">
-                <div class="col-xl-8 col-lg-12">
+                <div class="col-xl-12 col-lg-12">
                     <div class="card">
                         <div
                             class="card-header bg-primary  py-3 d-flex flex-row align-items-center justify-content-between">
@@ -29,11 +29,12 @@
                                 <table class="table table-bordered table-sm">
                                     <thead>
                                     <tr>
-                                        <th scope="col">#</th>
+                                        <th scope="col">Customer ID</th>
                                         <th scope="col">Customer Names</th>
-                                        <th scope="col">Customer Age</th>
+{{--                                        <th scope="col">Customer Age</th>--}}
+                                        <th scope="col">Date Of Birth</th>
                                         <th scope="col">Customer Gender</th>
-                                        <th scope="col">Income</th>
+                                        <th scope="col">Income (USD)</th>
                                         <th scope="col">Date Added</th>
                                     </tr>
                                     </thead>
@@ -42,10 +43,19 @@
                                         <tr>
                                             <td>CS00{{$customer->id}}</td>
                                             <td>{{$customer->customer_name}}</td>
-                                            <td>{{$customer->customer_age}}</td>
+                                            <td>{{$customer->customer_dob}}</td>
                                             <td>{{$customer->customer_gender}}</td>
-                                            <td>{{$customer->customer_income}}</td>
+                                            <td>${{$customer->customer_income}}</td>
                                             <td>{{$customer->created_at}}</td>
+                                            <td>
+                                                <form action="{{route('customers.destroy', $customer->id)}}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-xs">
+                                                       Delete
+                                                    </button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>

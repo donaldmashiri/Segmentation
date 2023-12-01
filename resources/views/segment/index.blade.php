@@ -132,7 +132,7 @@
                             <table class="table table-bordered table-sm">
                                 <thead>
                                 <tr>
-                                    <th scope="col">#</th>
+                                    <th scope="col">Customer ID</th>
                                     <th scope="col">Customer Names</th>
                                     <th scope="col">Customer Age</th>
                                     <th scope="col">Customer Income</th>
@@ -188,7 +188,7 @@
                 const pieChart = new Chart(ctx, {
                     type: 'pie',
                     data: {
-                        labels: ['Green', 'Red'],
+                        labels: ['Results', 'Total Records', ],
                         datasets: [{
                             data: [greenPercentage, redPercentage],
                             backgroundColor: ['#00ff00', '#ff0000']

@@ -10,7 +10,7 @@ class Customer extends Model
     use HasFactory;
 
     protected $fillable = [
-        'customer_name', 'customer_age', 'customer_gender', 'customer_income',
+        'customer_name', 'customer_age', 'customer_gender', 'customer_income', 'customer_dob', 'segment_type'
     ];
 
     public function transactions()

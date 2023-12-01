@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 class TransactionController extends Controller
 {
     /**
@@ -35,13 +35,19 @@ class TransactionController extends Controller
             'customer_id' => 'required|string|max:255',
             'transaction_type' => 'required',
             'transaction_amount' => 'required|numeric',
+            'transaction_teller_name' => 'required',
         ]);
+
+        $transaction_time = Carbon::now();
+
 
         $transactions = Transaction::create([
             'customer_id' => $validatedData['customer_id'],
             'transaction_amount' => $validatedData['transaction_amount'],
             'transaction_date' => now(),
+            'transaction_time' =>$transaction_time,
             'transaction_type' => $validatedData['transaction_type'],
+            'transaction_teller_name' => $validatedData['transaction_teller_name'],
         ]);
 
         session()->flash('success', 'Transaction Successfully Added.');

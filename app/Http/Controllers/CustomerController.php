@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Validator;
 
 class CustomerController extends Controller
 {
@@ -29,18 +31,28 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $validator = Validator::make($request->all(), [
             'customer_name' => 'required|string|max:255',
-            'customer_age' => 'required|numeric',
+            'customer_dob' => 'required|date',
             'customer_gender' => 'required',
             'customer_income' => 'required|numeric',
+            'segment_type' => 'required',
         ]);
 
+        $customerDateOfBirth = Carbon::parse($request->input('customer_dob'));
+        $customerAge = $customerDateOfBirth->diffInYears(Carbon::now());
+
+        if ($customerAge < 18) {
+            $validator->errors()->add('customer_dob', 'The customer must be at least 18 years old.');
+        }
+
         $customers = Customer::create([
-            'customer_name' => $validatedData['customer_name'],
-            'customer_age' => $validatedData['customer_age'],
-            'customer_gender' => $validatedData['customer_gender'],
-            'customer_income' => $validatedData['customer_income'],
+            'customer_name' => $request->input('customer_name'),
+            'customer_age' => $customerAge,
+            'customer_dob' => $customerDateOfBirth,
+            'customer_gender' =>  $request->input('customer_gender'),
+            'customer_income' =>  $request->input('customer_income'),
+            'segment_type' =>  $request->input('segment_type'),
         ]);
 
         session()->flash('success', 'Customer Successfully Added.');
@@ -74,8 +86,9 @@ class CustomerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Customer $customer)
     {
-        //
+        $customer->delete();
+        return redirect()->back()->with('success', 'Customer Deleted Successfully');
     }
 }
